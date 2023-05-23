@@ -2,24 +2,30 @@ package recipes.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import recipes.Exception.NotFound;
 import recipes.Model.Recipe;
-import recipes.RecipesApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RecipeService {
-  private Recipe recipe;
 
+  private static int nextId = 0;
+  private List<Recipe> recipes;
   @Autowired
-  public RecipeService(Recipe recipe){
-    this.recipe = recipe;
+  public RecipeService(){
+    this.recipes = new ArrayList<>();
   }
 
-  public void setRecipe(Recipe recipe) {
-   this.recipe = recipe;
+  public int createRecipe(Recipe recipe) {
+    recipe.setId(++nextId);
+    recipes.add(recipe);
+    return recipe.getId();
   }
 
-  public Recipe getRecipe(){
-    return this.recipe;
+  public Recipe findById(int id){
+    return recipes.parallelStream().filter(recipe -> recipe.getId() == id).findFirst().orElse(null);
   }
 
 }
