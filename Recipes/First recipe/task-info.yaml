@@ -170,6 +170,18 @@ files:
         implementation 'org.springframework.boot:spring-boot-starter-web'
     }
   learner_created: false
+- name: src/recipes/Model/Recipe.java
+  visible: true
+  learner_created: true
+- name: src/recipes/Controller/RecipeController.java
+  visible: true
+  learner_created: true
+- name: src/recipes/Service/RecipeService.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/180/stages/917/implement#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 23 May 2023 18:46:53 UTC"
+record: 1
